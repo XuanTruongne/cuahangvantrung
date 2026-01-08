@@ -47,17 +47,29 @@ const Contact = () => {
     setIsLoading(true);
 
     try {
-      const { error } = await supabase.from("leads").insert({
+      const leadData = {
         full_name: formData.full_name,
         phone: formData.phone,
         email: formData.email || null,
         address: formData.address || null,
         message: formData.message || null,
-        action: "contact",
+        action: "contact" as const,
         source: "contact_page",
-      });
+      };
+
+      const { error } = await supabase.from("leads").insert(leadData);
 
       if (error) throw error;
+
+      // Send email notification
+      try {
+        await supabase.functions.invoke("send-lead-notification", {
+          body: leadData,
+        });
+      } catch (emailError) {
+        console.error("Failed to send email notification:", emailError);
+        // Don't fail the form submission if email fails
+      }
 
       toast({
         title: "Gửi thành công!",
