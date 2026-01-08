@@ -1,8 +1,9 @@
 import { useParams, Link } from "react-router-dom";
+import { useMemo } from "react";
+import DOMPurify from "dompurify";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Calendar, User, ArrowLeft, Share2, Facebook, Tag } from "lucide-react";
-
 // Sample post data - in real app, fetch from Supabase
 const postsData: Record<string, {
   title: string;
@@ -72,6 +73,20 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug && postsData[slug] ? postsData[slug] : defaultPost;
 
+  // Sanitize and process content to prevent XSS attacks
+  const sanitizedContent = useMemo(() => {
+    const processedHtml = post.content
+      .replace(/## /g, '<h2 class="font-display text-2xl text-foreground mt-8 mb-4">')
+      .replace(/### /g, '<h3 class="font-semibold text-xl text-foreground mt-6 mb-3">')
+      .replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>')
+      .replace(/\n\n/g, '</p><p class="text-muted-foreground leading-relaxed">')
+      .replace(/\n(\d+\.)/g, '</p><p class="text-muted-foreground leading-relaxed">$1');
+    
+    return DOMPurify.sanitize(processedHtml, {
+      ALLOWED_TAGS: ['h2', 'h3', 'p', 'strong', 'em', 'ul', 'ol', 'li', 'br'],
+      ALLOWED_ATTR: ['class'],
+    });
+  }, [post.content]);
   return (
     <Layout>
       {/* Hero */}
@@ -138,12 +153,7 @@ const BlogPost = () => {
                 <div
                   className="text-foreground space-y-6"
                   dangerouslySetInnerHTML={{
-                    __html: post.content
-                      .replace(/## /g, '<h2 class="font-display text-2xl text-foreground mt-8 mb-4">')
-                      .replace(/### /g, '<h3 class="font-semibold text-xl text-foreground mt-6 mb-3">')
-                      .replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>')
-                      .replace(/\n\n/g, '</p><p class="text-muted-foreground leading-relaxed">')
-                      .replace(/\n(\d+\.)/g, '</p><p class="text-muted-foreground leading-relaxed">$1'),
+                    __html: sanitizedContent,
                   }}
                 />
               </article>
