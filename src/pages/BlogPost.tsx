@@ -1,65 +1,12 @@
 import { useParams, Link } from "react-router-dom";
 import { useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 import DOMPurify from "dompurify";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Calendar, User, ArrowLeft, Share2, Facebook, Tag } from "lucide-react";
-// Sample post data - in real app, fetch from Supabase
-const postsData: Record<string, {
-  title: string;
-  excerpt: string;
-  content: string;
-  image: string;
-  date: string;
-  author: string;
-  tags: string[];
-}> = {
-  "huong-dan-chon-may-duc-be-tong": {
-    title: "Hướng dẫn chọn máy đục bê tông phù hợp với nhu cầu",
-    excerpt: "Máy đục bê tông là thiết bị không thể thiếu trong các công trình xây dựng.",
-    content: `
-## Giới thiệu
-
-Máy đục bê tông là một trong những thiết bị quan trọng nhất trong ngành xây dựng. Việc lựa chọn đúng loại máy sẽ giúp công việc được thực hiện hiệu quả hơn, tiết kiệm thời gian và chi phí.
-
-## Các loại máy đục bê tông phổ biến
-
-### 1. Máy đục bê tông điện
-Đây là loại máy phổ biến nhất, phù hợp cho các công trình vừa và nhỏ. Ưu điểm là dễ sử dụng, bảo trì đơn giản.
-
-### 2. Máy đục bê tông chạy xăng
-Phù hợp cho các công trình ngoài trời hoặc những nơi không có nguồn điện. Công suất lớn hơn máy điện.
-
-### 3. Máy đục bê tông khí nén
-Sử dụng cho các công trình lớn, cần công suất cao. Yêu cầu máy nén khí đi kèm.
-
-## Tiêu chí lựa chọn
-
-1. **Công suất**: Tùy thuộc vào độ cứng và độ dày của bê tông cần đục
-2. **Trọng lượng**: Cân nhắc khả năng di chuyển và thời gian làm việc
-3. **Thương hiệu**: Nên chọn các thương hiệu uy tín như Bosch, Makita, Dewalt
-4. **Giá cả**: Cân đối giữa ngân sách và chất lượng
-
-## Kết luận
-
-Việc chọn đúng máy đục bê tông sẽ giúp công việc của bạn trở nên dễ dàng và hiệu quả hơn. Hãy liên hệ Văn Trung để được tư vấn chi tiết!
-    `,
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=600&fit=crop",
-    date: "2024-01-15",
-    author: "Văn Trung",
-    tags: ["Máy đục", "Hướng dẫn", "Xây dựng"],
-  },
-};
-
-const defaultPost = {
-  title: "Bài viết",
-  excerpt: "Nội dung bài viết đang được cập nhật...",
-  content: "Nội dung bài viết đang được cập nhật. Vui lòng quay lại sau.",
-  image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=600&fit=crop",
-  date: "2024-01-15",
-  author: "Văn Trung",
-  tags: ["Tin tức"],
-};
+import { supabase } from "@/integrations/supabase/client";
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString("vi-VN", {
@@ -71,22 +18,89 @@ function formatDate(dateString: string) {
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const post = slug && postsData[slug] ? postsData[slug] : defaultPost;
+
+  const { data: post, isLoading } = useQuery({
+    queryKey: ["blog", slug],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("*")
+        .eq("slug", slug)
+        .eq("published", true)
+        .single();
+
+      if (error) throw error;
+      return data;
+    },
+    enabled: !!slug,
+  });
 
   // Sanitize and process content to prevent XSS attacks
   const sanitizedContent = useMemo(() => {
+    if (!post?.content) return "";
+    
     const processedHtml = post.content
       .replace(/## /g, '<h2 class="font-display text-2xl text-foreground mt-8 mb-4">')
       .replace(/### /g, '<h3 class="font-semibold text-xl text-foreground mt-6 mb-3">')
       .replace(/\*\*(.*?)\*\*/g, '<strong class="text-foreground">$1</strong>')
       .replace(/\n\n/g, '</p><p class="text-muted-foreground leading-relaxed">')
       .replace(/\n(\d+\.)/g, '</p><p class="text-muted-foreground leading-relaxed">$1');
-    
+
     return DOMPurify.sanitize(processedHtml, {
       ALLOWED_TAGS: ['h2', 'h3', 'p', 'strong', 'em', 'ul', 'ol', 'li', 'br'],
       ALLOWED_ATTR: ['class'],
     });
-  }, [post.content]);
+  }, [post?.content]);
+
+  if (isLoading) {
+    return (
+      <Layout>
+        <section className="pt-24 pb-8 bg-industrial-dark">
+          <div className="container-custom">
+            <Skeleton className="h-8 w-32 mb-6" />
+            <div className="max-w-4xl space-y-4">
+              <div className="flex gap-2">
+                <Skeleton className="h-6 w-20" />
+                <Skeleton className="h-6 w-20" />
+              </div>
+              <Skeleton className="h-12 w-full" />
+              <Skeleton className="h-12 w-3/4" />
+              <div className="flex gap-6">
+                <Skeleton className="h-5 w-32" />
+                <Skeleton className="h-5 w-32" />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section className="bg-background">
+          <div className="container-custom">
+            <Skeleton className="w-full aspect-[21/9] rounded-lg" />
+          </div>
+        </section>
+      </Layout>
+    );
+  }
+
+  if (!post) {
+    return (
+      <Layout>
+        <section className="pt-24 pb-12 bg-industrial-dark">
+          <div className="container-custom text-center">
+            <h1 className="font-display text-4xl text-primary-foreground mb-4">
+              Không tìm thấy bài viết
+            </h1>
+            <p className="text-muted-foreground mb-6">
+              Bài viết bạn tìm kiếm không tồn tại hoặc đã bị xóa.
+            </p>
+            <Button asChild>
+              <Link to="/blog">Quay lại tin tức</Link>
+            </Button>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
+
   return (
     <Layout>
       {/* Hero */}
@@ -103,27 +117,31 @@ const BlogPost = () => {
             </Link>
           </Button>
           <div className="max-w-4xl">
-            <div className="flex flex-wrap gap-2 mb-4">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+            {post.tags && post.tags.length > 0 && (
+              <div className="flex flex-wrap gap-2 mb-4">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
             <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-6">
               {post.title}
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <User className="w-5 h-5" />
-                <span>{post.author}</span>
-              </div>
+              {post.author && (
+                <div className="flex items-center gap-2">
+                  <User className="w-5 h-5" />
+                  <span>{post.author}</span>
+                </div>
+              )}
               <div className="flex items-center gap-2">
                 <Calendar className="w-5 h-5" />
-                <span>{formatDate(post.date)}</span>
+                <span>{formatDate(post.published_at || post.created_at)}</span>
               </div>
             </div>
           </div>
@@ -135,7 +153,7 @@ const BlogPost = () => {
         <div className="container-custom">
           <div className="relative -mt-4 rounded-lg overflow-hidden shadow-lg">
             <img
-              src={post.image}
+              src={post.featured_image || "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=600&fit=crop"}
               alt={post.title}
               className="w-full aspect-[21/9] object-cover"
             />
@@ -178,22 +196,24 @@ const BlogPost = () => {
             <div className="lg:col-span-1">
               <div className="sticky top-24 space-y-8">
                 {/* Tags */}
-                <div className="bg-muted rounded-lg p-6">
-                  <h4 className="font-display text-lg text-foreground mb-4 flex items-center gap-2">
-                    <Tag className="w-5 h-5 text-primary" />
-                    THẺ
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 bg-background text-muted-foreground text-sm rounded-full border border-border hover:border-primary hover:text-primary transition-colors cursor-pointer"
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                {post.tags && post.tags.length > 0 && (
+                  <div className="bg-muted rounded-lg p-6">
+                    <h4 className="font-display text-lg text-foreground mb-4 flex items-center gap-2">
+                      <Tag className="w-5 h-5 text-primary" />
+                      THẺ
+                    </h4>
+                    <div className="flex flex-wrap gap-2">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-3 py-1 bg-background text-muted-foreground text-sm rounded-full border border-border hover:border-primary hover:text-primary transition-colors cursor-pointer"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
 
                 {/* CTA */}
                 <div className="bg-primary rounded-lg p-6 text-center">

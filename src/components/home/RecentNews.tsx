@@ -1,37 +1,9 @@
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { ArrowRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-// Sample news - in real app, fetch from Supabase
-const recentNews = [
-  {
-    id: "1",
-    slug: "huong-dan-chon-may-duc-be-tong",
-    title: "Hướng dẫn chọn máy đục bê tông phù hợp với nhu cầu",
-    excerpt:
-      "Máy đục bê tông là thiết bị không thể thiếu trong các công trình xây dựng. Bài viết này sẽ giúp bạn lựa chọn loại máy phù hợp nhất.",
-    image: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop",
-    date: "2024-01-15",
-  },
-  {
-    id: "2",
-    slug: "bao-tri-may-phat-dien-dinh-ky",
-    title: "5 bước bảo trì máy phát điện định kỳ đúng cách",
-    excerpt:
-      "Bảo trì định kỳ giúp máy phát điện hoạt động ổn định và kéo dài tuổi thọ. Tìm hiểu 5 bước quan trọng nhất.",
-    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=400&fit=crop",
-    date: "2024-01-10",
-  },
-  {
-    id: "3",
-    slug: "uu-nhuoc-diem-thue-thiet-bi",
-    title: "Ưu nhược điểm khi thuê thiết bị xây dựng",
-    excerpt:
-      "Thuê hay mua thiết bị? Đây là câu hỏi nhiều nhà thầu đặt ra. Cùng phân tích ưu nhược điểm của từng phương án.",
-    image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=600&h=400&fit=crop",
-    date: "2024-01-05",
-  },
-];
+import { Skeleton } from "@/components/ui/skeleton";
+import { supabase } from "@/integrations/supabase/client";
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString("vi-VN", {
@@ -42,6 +14,21 @@ function formatDate(dateString: string) {
 }
 
 export function RecentNews() {
+  const { data: recentNews, isLoading } = useQuery({
+    queryKey: ["recentBlogs"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("id, slug, title, excerpt, featured_image, published_at, created_at")
+        .eq("published", true)
+        .order("published_at", { ascending: false })
+        .limit(3);
+
+      if (error) throw error;
+      return data;
+    },
+  });
+
   return (
     <section className="section-padding bg-muted">
       <div className="container-custom">
@@ -65,38 +52,55 @@ export function RecentNews() {
 
         {/* News Grid */}
         <div className="grid md:grid-cols-3 gap-6">
-          {recentNews.map((post, index) => (
-            <Link
-              key={post.id}
-              to={`/blog/${post.slug}`}
-              className="group card-industrial animate-slide-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Image */}
-              <div className="relative aspect-[3/2] overflow-hidden">
-                <img
-                  src={post.image}
-                  alt={post.title}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
-
-              {/* Content */}
-              <div className="p-5">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                  <Calendar className="w-4 h-4" />
-                  <span>{formatDate(post.date)}</span>
+          {isLoading ? (
+            [...Array(3)].map((_, i) => (
+              <div key={i} className="card-industrial">
+                <Skeleton className="aspect-[3/2] w-full" />
+                <div className="p-5 space-y-3">
+                  <Skeleton className="h-4 w-1/3" />
+                  <Skeleton className="h-6 w-full" />
+                  <Skeleton className="h-4 w-full" />
                 </div>
-                <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-sm text-muted-foreground line-clamp-2">
-                  {post.excerpt}
-                </p>
               </div>
-            </Link>
-          ))}
+            ))
+          ) : recentNews && recentNews.length > 0 ? (
+            recentNews.map((post, index) => (
+              <Link
+                key={post.id}
+                to={`/blog/${post.slug}`}
+                className="group card-industrial animate-slide-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Image */}
+                <div className="relative aspect-[3/2] overflow-hidden">
+                  <img
+                    src={post.featured_image || "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop"}
+                    alt={post.title}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="p-5">
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                    <Calendar className="w-4 h-4" />
+                    <span>{formatDate(post.published_at || post.created_at)}</span>
+                  </div>
+                  <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground line-clamp-2">
+                    {post.excerpt}
+                  </p>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <div className="col-span-3 text-center py-8">
+              <p className="text-muted-foreground">Chưa có bài viết nào.</p>
+            </div>
+          )}
         </div>
       </div>
     </section>
