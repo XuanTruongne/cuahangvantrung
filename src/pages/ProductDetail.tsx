@@ -108,6 +108,22 @@ const ProductDetail = () => {
 
       if (error) throw error;
 
+      // Gửi email thông báo
+      const actionText = modalAction === "buy" ? "Đặt mua" : modalAction === "rent" ? "Thuê" : "Liên hệ";
+      try {
+        await supabase.functions.invoke("send-lead-notification", {
+          body: {
+            fullName: formData.fullName,
+            phone: formData.phone,
+            email: formData.email || "",
+            message: formData.message || "",
+            source: `Trang sản phẩm - ${actionText}: ${product?.name}`,
+          },
+        });
+      } catch (emailError) {
+        console.error("Email notification failed:", emailError);
+      }
+
       toast({
         title: "Gửi thành công!",
         description: "Chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.",
