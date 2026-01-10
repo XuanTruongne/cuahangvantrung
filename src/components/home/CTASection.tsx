@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Phone, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimatedSection } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 export function CTASection() {
   return (
@@ -25,44 +27,50 @@ export function CTASection() {
       />
 
       <div className="container-custom relative z-10">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-          {/* Content */}
-          <div className="text-center lg:text-left max-w-2xl">
-            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-4">
-              BẠN CẦN TƯ VẤN?
-              <span className="block text-primary">LIÊN HỆ NGAY HÔM NAY</span>
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Đội ngũ tư vấn của Văn Trung sẵn sàng hỗ trợ bạn 24/7. Gọi ngay
-              hoặc để lại thông tin, chúng tôi sẽ liên hệ lại trong vòng 30 phút.
-            </p>
-          </div>
+        <AnimatedSection>
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+            {/* Content */}
+            <div className="text-center lg:text-left max-w-2xl">
+              <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-4">
+                BẠN CẦN TƯ VẤN?
+                <span className="block text-primary">LIÊN HỆ NGAY HÔM NAY</span>
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Đội ngũ tư vấn của Văn Trung sẵn sàng hỗ trợ bạn 24/7. Gọi ngay
+                hoặc để lại thông tin, chúng tôi sẽ liên hệ lại trong vòng 30 phút.
+              </p>
+            </div>
 
-          {/* Actions */}
-          <div className="flex flex-col sm:flex-row items-center gap-4">
-            <a
-              href="tel:0123456789"
-              className="flex items-center gap-3 px-6 py-4 bg-primary rounded-lg text-primary-foreground hover:opacity-90 transition-opacity"
-            >
-              <Phone className="w-6 h-6" />
-              <div className="text-left">
-                <div className="text-sm opacity-80">Hotline</div>
-                <div className="font-display text-xl">0123 456 789</div>
-              </div>
-            </a>
-            <Button
-              size="lg"
-              variant="outline"
-              asChild
-              className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground"
-            >
-              <Link to="/contact" className="group">
-                Gửi yêu cầu
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row items-center gap-4">
+              <motion.a
+                href="tel:0123456789"
+                className="flex items-center gap-3 px-6 py-4 bg-primary rounded-lg text-primary-foreground hover:opacity-90 transition-opacity"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <Phone className="w-6 h-6" />
+                <div className="text-left">
+                  <div className="text-sm opacity-80">Hotline</div>
+                  <div className="font-display text-xl">0123 456 789</div>
+                </div>
+              </motion.a>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  asChild
+                  className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  <Link to="/contact" className="group">
+                    Gửi yêu cầu
+                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </motion.div>
+            </div>
           </div>
-        </div>
+        </AnimatedSection>
       </div>
     </section>
   );

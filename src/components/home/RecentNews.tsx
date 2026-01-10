@@ -4,6 +4,8 @@ import { ArrowRight, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { supabase } from "@/integrations/supabase/client";
+import { AnimatedSection, AnimatedContainer, AnimatedItem } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 function formatDate(dateString: string) {
   return new Date(dateString).toLocaleDateString("vi-VN", {
@@ -33,7 +35,7 @@ export function RecentNews() {
     <section className="section-padding bg-muted">
       <div className="container-custom">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
+        <AnimatedSection className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
           <div>
             <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
               Tin tức mới nhất
@@ -48,12 +50,12 @@ export function RecentNews() {
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
-        </div>
+        </AnimatedSection>
 
         {/* News Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {isLoading ? (
-            [...Array(3)].map((_, i) => (
+        {isLoading ? (
+          <div className="grid md:grid-cols-3 gap-6">
+            {[...Array(3)].map((_, i) => (
               <div key={i} className="card-industrial">
                 <Skeleton className="aspect-[3/2] w-full" />
                 <div className="p-5 space-y-3">
@@ -62,46 +64,50 @@ export function RecentNews() {
                   <Skeleton className="h-4 w-full" />
                 </div>
               </div>
-            ))
-          ) : recentNews && recentNews.length > 0 ? (
-            recentNews.map((post, index) => (
-              <Link
-                key={post.id}
-                to={`/blog/${post.slug}`}
-                className="group card-industrial animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Image */}
-                <div className="relative aspect-[3/2] overflow-hidden">
-                  <img
-                    src={post.featured_image || "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop"}
-                    alt={post.title}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
+            ))}
+          </div>
+        ) : recentNews && recentNews.length > 0 ? (
+          <AnimatedContainer className="grid md:grid-cols-3 gap-6" staggerDelay={0.15}>
+            {recentNews.map((post) => (
+              <AnimatedItem key={post.id}>
+                <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    className="group card-industrial block"
+                  >
+                    {/* Image */}
+                    <div className="relative aspect-[3/2] overflow-hidden">
+                      <img
+                        src={post.featured_image || "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&h=400&fit=crop"}
+                        alt={post.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                    </div>
 
-                {/* Content */}
-                <div className="p-5">
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                    <Calendar className="w-4 h-4" />
-                    <span>{formatDate(post.published_at || post.created_at)}</span>
-                  </div>
-                  <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
-                    {post.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground line-clamp-2">
-                    {post.excerpt}
-                  </p>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <div className="col-span-3 text-center py-8">
-              <p className="text-muted-foreground">Chưa có bài viết nào.</p>
-            </div>
-          )}
-        </div>
+                    {/* Content */}
+                    <div className="p-5">
+                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                        <Calendar className="w-4 h-4" />
+                        <span>{formatDate(post.published_at || post.created_at)}</span>
+                      </div>
+                      <h3 className="font-semibold text-lg text-foreground mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground line-clamp-2">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                  </Link>
+                </motion.div>
+              </AnimatedItem>
+            ))}
+          </AnimatedContainer>
+        ) : (
+          <div className="text-center py-8">
+            <p className="text-muted-foreground">Chưa có bài viết nào.</p>
+          </div>
+        )}
       </div>
     </section>
   );
