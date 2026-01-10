@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, ShoppingCart, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { AnimatedSection, AnimatedContainer, AnimatedItem } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 // Sample featured products - in real app, fetch from Supabase
 const featuredProducts = [
@@ -51,7 +53,7 @@ export function FeaturedProducts() {
     <section className="section-padding bg-muted">
       <div className="container-custom">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
+        <AnimatedSection className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
           <div>
             <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
               Sản phẩm nổi bật
@@ -66,63 +68,65 @@ export function FeaturedProducts() {
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
-        </div>
+        </AnimatedSection>
 
         {/* Products Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.map((product, index) => (
-            <Link
-              key={product.id}
-              to={`/products/${product.slug}`}
-              className="group card-industrial animate-slide-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute top-3 left-3">
-                  <span className="px-2 py-1 bg-primary text-primary-foreground text-xs font-medium rounded">
-                    {product.category}
-                  </span>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-4">
-                <h3 className="font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
-                  {product.name}
-                </h3>
-
-                {/* Prices */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <div className="flex items-center gap-1 text-muted-foreground">
-                      <ShoppingCart className="w-4 h-4" />
-                      <span>Mua:</span>
+        <AnimatedContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
+          {featuredProducts.map((product) => (
+            <AnimatedItem key={product.id}>
+              <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
+                <Link
+                  to={`/products/${product.slug}`}
+                  className="group card-industrial block"
+                >
+                  {/* Image */}
+                  <div className="relative aspect-[4/3] overflow-hidden bg-secondary">
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className="px-2 py-1 bg-primary text-primary-foreground text-xs font-medium rounded">
+                        {product.category}
+                      </span>
                     </div>
-                    <span className="font-semibold text-foreground">
-                      {formatPrice(product.buyPrice)}
-                    </span>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <div className="flex items-center gap-1 text-muted-foreground">
-                      <Clock className="w-4 h-4" />
-                      <span>Thuê/ngày:</span>
+
+                  {/* Content */}
+                  <div className="p-4">
+                    <h3 className="font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+                      {product.name}
+                    </h3>
+
+                    {/* Prices */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-1 text-muted-foreground">
+                          <ShoppingCart className="w-4 h-4" />
+                          <span>Mua:</span>
+                        </div>
+                        <span className="font-semibold text-foreground">
+                          {formatPrice(product.buyPrice)}
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between text-sm">
+                        <div className="flex items-center gap-1 text-muted-foreground">
+                          <Clock className="w-4 h-4" />
+                          <span>Thuê/ngày:</span>
+                        </div>
+                        <span className="font-semibold text-primary">
+                          {formatPrice(product.rentPriceDaily)}
+                        </span>
+                      </div>
                     </div>
-                    <span className="font-semibold text-primary">
-                      {formatPrice(product.rentPriceDaily)}
-                    </span>
                   </div>
-                </div>
-              </div>
-            </Link>
+                </Link>
+              </motion.div>
+            </AnimatedItem>
           ))}
-        </div>
+        </AnimatedContainer>
       </div>
     </section>
   );

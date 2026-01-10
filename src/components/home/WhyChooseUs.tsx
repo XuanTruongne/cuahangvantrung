@@ -1,4 +1,6 @@
 import { Shield, Clock, Wrench, Truck, Award, Headphones } from "lucide-react";
+import { AnimatedSection, AnimatedContainer, AnimatedItem } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 const reasons = [
   {
@@ -38,7 +40,7 @@ export function WhyChooseUs() {
     <section className="section-padding bg-background">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <AnimatedSection className="text-center max-w-2xl mx-auto mb-12">
           <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
             Tại sao chọn chúng tôi
           </span>
@@ -49,26 +51,28 @@ export function WhyChooseUs() {
             Với hơn 10 năm kinh nghiệm, Văn Trung tự hào là đối tác tin cậy của
             hàng trăm công trình xây dựng.
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Reasons Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((reason, index) => (
-            <div
-              key={reason.title}
-              className="group p-6 rounded-lg border border-border bg-card hover:border-primary/50 hover:shadow-lg transition-all animate-slide-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
-                <reason.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
-              </div>
-              <h3 className="font-semibold text-lg text-foreground mb-2">
-                {reason.title}
-              </h3>
-              <p className="text-sm text-muted-foreground">{reason.description}</p>
-            </div>
+        <AnimatedContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerDelay={0.1}>
+          {reasons.map((reason) => (
+            <AnimatedItem key={reason.title}>
+              <motion.div
+                whileHover={{ y: -5, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
+                className="group p-6 rounded-lg border border-border bg-card hover:border-primary/50 hover:shadow-lg transition-all h-full"
+              >
+                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                  <reason.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
+                </div>
+                <h3 className="font-semibold text-lg text-foreground mb-2">
+                  {reason.title}
+                </h3>
+                <p className="text-sm text-muted-foreground">{reason.description}</p>
+              </motion.div>
+            </AnimatedItem>
           ))}
-        </div>
+        </AnimatedContainer>
       </div>
     </section>
   );

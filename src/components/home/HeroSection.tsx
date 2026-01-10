@@ -1,6 +1,28 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Shield, Clock, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1 },
+};
 
 export function HeroSection() {
   return (
@@ -30,24 +52,45 @@ export function HeroSection() {
       <div className="container-custom relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Content */}
-          <div className="space-y-8 text-center lg:text-left">
+          <motion.div
+            className="space-y-8 text-center lg:text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium animate-fade-in">
+              <motion.div
+                variants={itemVariants}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium"
+              >
                 <Wrench className="w-4 h-4" />
                 Uy tín hơn 10 năm kinh nghiệm
-              </div>
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground leading-tight animate-slide-up">
+              </motion.div>
+              <motion.h1
+                variants={itemVariants}
+                transition={{ duration: 0.6 }}
+                className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground leading-tight"
+              >
                 VĂN TRUNG
                 <span className="block text-primary">THIẾT BỊ XÂY DỰNG</span>
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-slide-up" style={{ animationDelay: "100ms" }}>
+              </motion.h1>
+              <motion.p
+                variants={itemVariants}
+                transition={{ duration: 0.6 }}
+                className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0"
+              >
                 Chuyên cho thuê, mua bán, sửa chữa và bảo trì máy đục bê tông, 
                 máy tời, máy phát điện và các thiết bị xây dựng chất lượng cao.
-              </p>
+              </motion.p>
             </div>
 
             {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-slide-up" style={{ animationDelay: "200ms" }}>
+            <motion.div
+              variants={itemVariants}
+              transition={{ duration: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
+            >
               <Button size="lg" asChild className="group">
                 <Link to="/products">
                   Xem sản phẩm
@@ -57,10 +100,14 @@ export function HeroSection() {
               <Button size="lg" variant="outline" asChild className="border-primary/30 text-primary hover:bg-primary hover:text-primary-foreground">
                 <Link to="/contact">Liên hệ ngay</Link>
               </Button>
-            </div>
+            </motion.div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-industrial-gray/30 animate-slide-up" style={{ animationDelay: "300ms" }}>
+            <motion.div
+              variants={itemVariants}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-3 gap-6 pt-8 border-t border-industrial-gray/30"
+            >
               <div className="text-center lg:text-left">
                 <div className="font-display text-3xl text-primary">10+</div>
                 <div className="text-sm text-muted-foreground">Năm kinh nghiệm</div>
@@ -73,63 +120,67 @@ export function HeroSection() {
                 <div className="font-display text-3xl text-primary">100+</div>
                 <div className="text-sm text-muted-foreground">Thiết bị</div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Feature Cards */}
-          <div className="hidden lg:grid grid-cols-2 gap-4">
+          <motion.div
+            className="hidden lg:grid grid-cols-2 gap-4"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
             <div className="space-y-4">
-              <div className="bg-industrial-gray/20 backdrop-blur border border-industrial-gray/30 rounded-lg p-6 hover:border-primary/50 transition-colors animate-scale-in" style={{ animationDelay: "200ms" }}>
+              <motion.div
+                variants={cardVariants}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="bg-industrial-gray/20 backdrop-blur border border-industrial-gray/30 rounded-lg p-6 hover:border-primary/50 transition-colors"
+              >
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <Shield className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-display text-lg text-primary-foreground mb-2">
-                  BẢO HÀNH UY TÍN
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Cam kết bảo hành chính hãng cho tất cả sản phẩm
-                </p>
-              </div>
-              <div className="bg-industrial-gray/20 backdrop-blur border border-industrial-gray/30 rounded-lg p-6 hover:border-primary/50 transition-colors animate-scale-in" style={{ animationDelay: "400ms" }}>
+                <h3 className="font-display text-lg text-primary-foreground mb-2">BẢO HÀNH UY TÍN</h3>
+                <p className="text-sm text-muted-foreground">Cam kết bảo hành chính hãng cho tất cả sản phẩm</p>
+              </motion.div>
+              <motion.div
+                variants={cardVariants}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="bg-industrial-gray/20 backdrop-blur border border-industrial-gray/30 rounded-lg p-6 hover:border-primary/50 transition-colors"
+              >
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <Wrench className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-display text-lg text-primary-foreground mb-2">
-                  SỬA CHỮA NHANH
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Đội ngũ kỹ thuật viên lành nghề, sửa chữa nhanh chóng
-                </p>
-              </div>
+                <h3 className="font-display text-lg text-primary-foreground mb-2">SỬA CHỮA NHANH</h3>
+                <p className="text-sm text-muted-foreground">Đội ngũ kỹ thuật viên lành nghề, sửa chữa nhanh chóng</p>
+              </motion.div>
             </div>
             <div className="space-y-4 mt-8">
-              <div className="bg-industrial-gray/20 backdrop-blur border border-industrial-gray/30 rounded-lg p-6 hover:border-primary/50 transition-colors animate-scale-in" style={{ animationDelay: "300ms" }}>
+              <motion.div
+                variants={cardVariants}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="bg-industrial-gray/20 backdrop-blur border border-industrial-gray/30 rounded-lg p-6 hover:border-primary/50 transition-colors"
+              >
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4">
                   <Clock className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-display text-lg text-primary-foreground mb-2">
-                  CHO THUÊ LINH HOẠT
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  Thuê theo ngày, tuần hoặc tháng với giá ưu đãi
-                </p>
-              </div>
-              <div className="bg-primary rounded-lg p-6 animate-scale-in" style={{ animationDelay: "500ms" }}>
-                <div className="font-display text-2xl text-primary-foreground mb-2">
-                  GỌI NGAY
-                </div>
-                <a
-                  href="tel:0123456789"
-                  className="text-xl font-bold text-primary-foreground hover:underline"
-                >
-                  0123 456 789
-                </a>
-                <p className="text-sm text-primary-foreground/80 mt-2">
-                  Tư vấn miễn phí 24/7
-                </p>
-              </div>
+                <h3 className="font-display text-lg text-primary-foreground mb-2">CHO THUÊ LINH HOẠT</h3>
+                <p className="text-sm text-muted-foreground">Thuê theo ngày, tuần hoặc tháng với giá ưu đãi</p>
+              </motion.div>
+              <motion.div
+                variants={cardVariants}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                className="bg-primary rounded-lg p-6"
+              >
+                <div className="font-display text-2xl text-primary-foreground mb-2">GỌI NGAY</div>
+                <a href="tel:0123456789" className="text-xl font-bold text-primary-foreground hover:underline">0123 456 789</a>
+                <p className="text-sm text-primary-foreground/80 mt-2">Tư vấn miễn phí 24/7</p>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

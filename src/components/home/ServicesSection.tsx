@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { Clock, ShoppingCart, Wrench, Settings, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { AnimatedSection, AnimatedContainer, AnimatedItem } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -42,7 +44,7 @@ export function ServicesSection() {
     <section className="section-padding bg-background">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <AnimatedSection className="text-center max-w-2xl mx-auto mb-12">
           <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
             Dịch vụ của chúng tôi
           </span>
@@ -53,38 +55,40 @@ export function ServicesSection() {
             Văn Trung cung cấp đầy đủ các dịch vụ từ cho thuê, mua bán đến sửa
             chữa và bảo trì thiết bị xây dựng.
           </p>
-        </div>
+        </AnimatedSection>
 
         {/* Services Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <Link
-              key={service.id}
-              to={`/services#${service.id}`}
-              className="group card-industrial p-6 flex flex-col animate-slide-up"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div
-                className={cn(
-                  "w-14 h-14 rounded-lg flex items-center justify-center mb-4 transition-transform group-hover:scale-110",
-                  service.color
-                )}
-              >
-                <service.icon className="w-7 h-7 text-primary-foreground" />
-              </div>
-              <h3 className="font-display text-xl text-foreground mb-2 group-hover:text-primary transition-colors">
-                {service.title.toUpperCase()}
-              </h3>
-              <p className="text-sm text-muted-foreground flex-1 mb-4">
-                {service.description}
-              </p>
-              <div className="flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all">
-                Tìm hiểu thêm
-                <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </Link>
+        <AnimatedContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
+          {services.map((service) => (
+            <AnimatedItem key={service.id}>
+              <motion.div whileHover={{ y: -8 }} transition={{ duration: 0.3 }}>
+                <Link
+                  to={`/services#${service.id}`}
+                  className="group card-industrial p-6 flex flex-col h-full"
+                >
+                  <div
+                    className={cn(
+                      "w-14 h-14 rounded-lg flex items-center justify-center mb-4 transition-transform group-hover:scale-110",
+                      service.color
+                    )}
+                  >
+                    <service.icon className="w-7 h-7 text-primary-foreground" />
+                  </div>
+                  <h3 className="font-display text-xl text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {service.title.toUpperCase()}
+                  </h3>
+                  <p className="text-sm text-muted-foreground flex-1 mb-4">
+                    {service.description}
+                  </p>
+                  <div className="flex items-center text-primary text-sm font-medium group-hover:gap-2 transition-all">
+                    Tìm hiểu thêm
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
+              </motion.div>
+            </AnimatedItem>
           ))}
-        </div>
+        </AnimatedContainer>
       </div>
     </section>
   );
