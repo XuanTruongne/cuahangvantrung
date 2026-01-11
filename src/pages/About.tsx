@@ -131,7 +131,7 @@ const About = () => {
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Địa chỉ</h4>
                       <p className="text-muted-foreground">
-                        123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh
+                        57 Chu Mạnh Trinh, P. Tam Thắng, TP. Hồ Chí Minh (P. 8, TP. Vũng Tàu cũ)    
                       </p>
                     </div>
                   </div>
