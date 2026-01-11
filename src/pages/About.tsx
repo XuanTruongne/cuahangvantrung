@@ -141,8 +141,8 @@ const About = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Điện thoại</h4>
-                      <a href="tel:0123456789" className="text-primary hover:underline">
-                        0123 456 789
+                      <a className="text-primary hover:underline" href="tel:0819516052">
+                        0819516052
                       </a>
                     </div>
                   </div>
