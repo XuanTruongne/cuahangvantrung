@@ -43,7 +43,7 @@ const Services = () => {
       <PageTransition>
         {/* Hero */}
         <section className="pt-24 pb-12 bg-industrial-dark">
-          <div className="container-custom my-[25px]">
+          <div className="container-custom my-[30px]">
             <AnimatedSection className="text-center max-w-3xl mx-auto">
               <span className="inline-block bg-primary/10 text-primary font-medium rounded-full mb-4 px-[25px] text-2xl py-[5px]">
                 Dịch vụ
