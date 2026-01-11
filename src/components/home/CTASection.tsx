@@ -24,12 +24,9 @@ export function CTASection() {
             <div className="text-center lg:text-left max-w-2xl">
               <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground mb-4">
                 BẠN CẦN TƯ VẤN?
-                <span className="block text-primary">LIÊN HỆ NGAY HÔM NAY</span>
+                <span className="block text-primary my-[20px]">LIÊN HỆ NGAY HÔM NAY</span>
               </h2>
-              <p className="text-lg text-muted-foreground">
-                Đội ngũ tư vấn của Văn Trung sẵn sàng hỗ trợ bạn 24/7. Gọi ngay
-                hoặc để lại thông tin, chúng tôi sẽ liên hệ lại trong vòng 30 phút.
-              </p>
+              <p className="text-lg text-primary-foreground">Đội ngũ tư vấn của Văn Trung sẵn sàng hỗ trợ bạn 24/7. Gọi ngay hoặc để lại thông tin, chúng tôi sẽ liên hệ lại trong vòng 7 phút.</p>
             </div>
 
             {/* Actions */}
