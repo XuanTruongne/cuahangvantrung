@@ -41,18 +41,15 @@ export function Footer() {
                 <Wrench className="w-6 h-6 text-primary-foreground" />
               </div>
               <div className="flex flex-col">
-                <span className="font-display text-xl leading-none text-primary-foreground">
+                <span className="font-display text-xl leading-none text-primary font-bold">
                   VĂN TRUNG
                 </span>
-                <span className="text-xs text-muted-foreground">
+                <span className="text-xs text-primary">
                   Thiết bị xây dựng
                 </span>
               </div>
             </Link>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Chuyên cho thuê, mua bán, sửa chữa và bảo trì các loại thiết bị 
-              xây dựng chất lượng cao với giá cả cạnh tranh.
-            </p>
+            <p className="text-sm leading-relaxed text-primary-foreground text-justify">Chuyên cho thuê, mua bán, sửa chữa và bảo trì các loại thiết bị cho công trình thi công, xây dựng</p>
             <div className="flex items-center gap-3">
               <a href="https://facebook.com/vantrung" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Facebook className="w-5 h-5" />
