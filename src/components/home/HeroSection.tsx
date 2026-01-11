@@ -58,9 +58,9 @@ export function HeroSection() {
             <div className="space-y-4">
               <motion.div variants={itemVariants} transition={{
               duration: 0.6
-            }} className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium">
+            }} className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full text-primary text-sm font-medium py-[10px] px-[25px]">
                 <Wrench className="w-4 h-4" />
-                Uy tín hơn 10 năm kinh nghiệm
+                UY TÍN HƠN 10+ NĂM KINH NGHIỆM      
               </motion.div>
               <motion.h1 variants={itemVariants} transition={{
               duration: 0.6
