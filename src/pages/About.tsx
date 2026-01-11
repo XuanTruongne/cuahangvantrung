@@ -7,9 +7,9 @@ const About = () => {
       <PageTransition>
         {/* Hero */}
         <section className="pt-24 pb-12 bg-industrial-dark">
-          <div className="container-custom">
+          <div className="container-custom my-[40px]">
             <AnimatedSection className="text-center max-w-3xl mx-auto">
-              <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+              <span className="inline-block font-medium rounded-full mb-4 text-2xl py-[10px] px-[30px] text-primary bg-white/[0.72]">
                 Về chúng tôi
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4">
