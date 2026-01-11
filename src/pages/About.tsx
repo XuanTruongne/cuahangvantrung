@@ -2,10 +2,8 @@ import { Layout } from "@/components/layout/Layout";
 import { PageTransition } from "@/components/ui/page-transition";
 import { AnimatedSection, AnimatedContainer, AnimatedItem } from "@/components/ui/animated-section";
 import { MapPin, Phone, Mail, Clock, Users, Target, Award } from "lucide-react";
-
 const About = () => {
-  return (
-    <Layout>
+  return <Layout>
       <PageTransition>
         {/* Hero */}
         <section className="pt-24 pb-12 bg-industrial-dark">
@@ -18,8 +16,7 @@ const About = () => {
                 CỬA HÀNG <span className="text-primary">VĂN TRUNG</span>
               </h1>
               <p className="text-lg text-muted-foreground">
-                Hơn 10 năm kinh nghiệm trong lĩnh vực cho thuê, mua bán và sửa chữa
-                thiết bị xây dựng chất lượng cao.
+                Hơn 10 năm kinh nghiệm trong lĩnh vực cho thuê, mua bán, sửa chữa và bảo trì thiết bị xây dựng chất lượng cao.
               </p>
             </AnimatedSection>
           </div>
@@ -191,24 +188,15 @@ const About = () => {
               {/* Map */}
               <AnimatedSection direction="right" delay={0.2}>
                 <div className="rounded-lg overflow-hidden border border-border h-[400px]">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4946681007846!2d106.69920147573875!3d10.773374259225896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4670702e31%3A0xa5777fb3a5bb9972!2zQuG6v24gVGjDoG5oIFBo4buRIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1704963123456!5m2!1svi!2s"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Bản đồ cửa hàng Văn Trung"
-                  />
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4946681007846!2d106.69920147573875!3d10.773374259225896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4670702e31%3A0xa5777fb3a5bb9972!2zQuG6v24gVGjDoG5oIFBo4buRIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1704963123456!5m2!1svi!2s" width="100%" height="100%" style={{
+                  border: 0
+                }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Bản đồ cửa hàng Văn Trung" />
                 </div>
               </AnimatedSection>
             </div>
           </div>
         </section>
       </PageTransition>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default About;
