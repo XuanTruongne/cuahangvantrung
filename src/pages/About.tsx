@@ -117,7 +117,7 @@ const About = () => {
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Info */}
               <AnimatedSection direction="left">
-                <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+                <span className="inline-block bg-primary/10 text-primary font-medium rounded-full mb-4 px-[25px] py-[5px] text-2xl">
                   Thông tin liên hệ
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl text-foreground mb-8">
