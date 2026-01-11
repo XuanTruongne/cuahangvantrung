@@ -90,7 +90,7 @@ const Services = () => {
                   <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
                     {service.title.toUpperCase()}
                   </h2>
-                  <p className="text-muted-foreground mb-6">{service.fullDesc}</p>
+                  <p className="text-muted-foreground mb-6 text-justify">{service.fullDesc}</p>
                   <ul className="space-y-3 mb-8">
                     {service.features.map((feature, featureIndex) => <motion.li key={feature} initial={{
                   opacity: 0,
