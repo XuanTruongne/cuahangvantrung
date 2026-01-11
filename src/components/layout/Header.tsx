@@ -65,7 +65,7 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <a href="tel:0123456789" className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
-              <span>0819 516052 </span>
+              <span>0819 516 052 </span>
             </a>
             <Button asChild>
               <Link to="/contact">Liên hệ ngay</Link>
