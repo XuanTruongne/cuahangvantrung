@@ -43,17 +43,16 @@ const Services = () => {
       <PageTransition>
         {/* Hero */}
         <section className="pt-24 pb-12 bg-industrial-dark">
-          <div className="container-custom">
+          <div className="container-custom my-[25px]">
             <AnimatedSection className="text-center max-w-3xl mx-auto">
               <span className="inline-block bg-primary/10 text-primary font-medium rounded-full mb-4 px-[25px] text-2xl py-[5px]">
                 Dịch vụ
               </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 my-[5px] py-0">
                 DỊCH VỤ <span className="text-primary">TOÀN DIỆN</span>
               </h1>
-              <p className="text-lg text-muted-foreground">
-                Văn Trung cung cấp đầy đủ các dịch vụ từ cho thuê, mua bán đến
-                sửa chữa và bảo trì thiết bị xây dựng.
+              <p className="text-primary-foreground text-2xl">
+                 Cửa Hàng  Văn Trung cung cấp đầy đủ các dịch vụ từ cho thuê, mua bán đến sửa chữa và bảo trì thiết bị xây dựng.                                       
               </p>
             </AnimatedSection>
           </div>
