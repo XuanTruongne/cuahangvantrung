@@ -70,10 +70,7 @@ export function HeroSection() {
               </motion.h1>
               <motion.p variants={itemVariants} transition={{
               duration: 0.6
-            }} className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">
-                Chuyên cho thuê, mua bán, sửa chữa và bảo trì máy đục bê tông, 
-                máy tời, máy phát điện và các thiết bị xây dựng chất lượng cao.
-              </motion.p>
+            }} className="text-lg text-muted-foreground max-w-xl mx-auto lg:mx-0">Chuyên cho thuê, mua bán, sửa chữa và bảo trì các thiết bị máy móc xây dựng: máy đục bê tông, máy tời, máy phát điện,...và các thiết bị xây dựng khác trong coông trình</motion.p>
             </div>
 
             {/* CTAs */}
