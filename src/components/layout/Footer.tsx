@@ -64,7 +64,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {quickLinks.map(link => <li key={link.path}>
-                  <Link to={link.path} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group">
+                  <Link to={link.path} className="flex items-center gap-2 text-sm transition-colors group text-primary-foreground">
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     {link.name}
                   </Link>
@@ -79,7 +79,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {services.map(service => <li key={service.path}>
-                  <Link to={service.path} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group">
+                  <Link to={service.path} className="flex items-center gap-2 text-sm transition-colors group text-primary-foreground">
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     {service.name}
                   </Link>
