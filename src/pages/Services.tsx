@@ -48,7 +48,7 @@ const Services = () => {
               <span className="inline-block bg-primary/10 text-primary font-medium rounded-full mb-4 px-[25px] text-2xl py-[5px]">
                 Dịch vụ
               </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 my-[5px] py-0">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 my-0 py-[10px]">
                 DỊCH VỤ <span className="text-primary">TOÀN DIỆN</span>
               </h1>
               <p className="text-primary-foreground text-2xl">
