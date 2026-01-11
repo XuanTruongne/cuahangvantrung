@@ -51,7 +51,7 @@ export function FeaturedProducts() {
               Sản phẩm nổi bật
             </span>
             <h2 className="font-display text-3xl md:text-4xl text-foreground">
-              THIẾT BỊ CHẤT LƯỢNG CAO
+              THIẾT BỊ CỦA CHÚNG TÔI    
             </h2>
           </div>
           <Button variant="outline" asChild className="group">
