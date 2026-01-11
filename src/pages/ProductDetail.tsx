@@ -355,9 +355,9 @@ const ProductDetail = () => {
                 duration: 0.4,
                 delay: 0.3
               }} className="flex items-center gap-4 pt-4 border-t border-border">
-                  <a href="tel:0123456789" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <a className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors" href="tel:0819516052">
                     <Phone className="w-4 h-4" />
-                    0123 456 789
+                    0819 516 052  
                   </a>
                   <a href="https://zalo.me/0123456789" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors">
                     <MessageCircle className="w-4 h-4" />
