@@ -104,7 +104,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a className="text-sm text-muted-foreground hover:text-primary transition-colors" href="tel:0819516052">
+                <a href="tel:0819516052" className="text-sm transition-colors text-white">
                   0819 516 052  
                 </a>
               </li>
@@ -116,7 +116,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Clock className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-sm text-muted-foreground">
+                <span className="text-sm text-white">
                   7:00 - 18:00 (T2 - T7)
                 </span>
               </li>
