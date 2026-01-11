@@ -34,13 +34,9 @@ const About = () => {
                   HÀNH TRÌNH XÂY DỰNG UY TÍN
                 </h2>
                 <div className="space-y-4 text-muted-foreground">
-                  <p>Cửa Hàng Văn Trung được thành lập từ năm 2014 với mong muốn mang đến cho khách hàng những thiết bị xây dựng chất lượng nhất với giá cả hợp lý.</p>
-                  <p>
-                    Qua hơn 10 năm phát triển, chúng tôi đã trở thành đối tác tin
-                    cậy của hàng trăm công trình xây dựng lớn nhỏ trên khắp cả
-                    nước.
-                  </p>
-                  <p>
+                  <p className="text-justify">Cửa Hàng Văn Trung được thành lập từ năm 2014 cung cấp các thiết bị như: máy đục bê tông, máy tời, máy trộn,...Với mong muốn mang đến cho khách hàng những thiết bị xây dựng chất lượng nhất với giá cả hợp lý.</p>
+                  <p className="text-justify">Qua hơn 10 năm phát triển, chúng tôi đã trở thành đối tác tin cậy của hàng trăm công trình xây dựng lớn nhỏ trên khắp miền nam nói chung và Thành Phố Vũng Tàu nói riêng.</p>
+                  <p className="text-justify">
                     Với đội ngũ kỹ thuật viên lành nghề và hệ thống kho bãi hiện
                     đại, chúng tôi cam kết đáp ứng mọi nhu cầu về thiết bị xây
                     dựng của quý khách.
