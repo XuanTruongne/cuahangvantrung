@@ -1,32 +1,36 @@
 import { Link } from "react-router-dom";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
-  Facebook, 
-  Wrench,
-  ChevronRight
-} from "lucide-react";
-
-const quickLinks = [
-  { name: "Trang chủ", path: "/" },
-  { name: "Sản phẩm", path: "/products" },
-  { name: "Dịch vụ", path: "/services" },
-  { name: "Tin tức", path: "/blog" },
-  { name: "Liên hệ", path: "/contact" },
-];
-
-const services = [
-  { name: "Cho thuê thiết bị", path: "/services#cho-thue" },
-  { name: "Mua bán thiết bị", path: "/services#mua-ban" },
-  { name: "Sửa chữa", path: "/services#sua-chua" },
-  { name: "Bảo trì định kỳ", path: "/services#bao-tri" },
-];
-
+import { Phone, Mail, MapPin, Clock, Facebook, Wrench, ChevronRight } from "lucide-react";
+const quickLinks = [{
+  name: "Trang chủ",
+  path: "/"
+}, {
+  name: "Sản phẩm",
+  path: "/products"
+}, {
+  name: "Dịch vụ",
+  path: "/services"
+}, {
+  name: "Tin tức",
+  path: "/blog"
+}, {
+  name: "Liên hệ",
+  path: "/contact"
+}];
+const services = [{
+  name: "Cho thuê thiết bị",
+  path: "/services#cho-thue"
+}, {
+  name: "Mua bán thiết bị",
+  path: "/services#mua-ban"
+}, {
+  name: "Sửa chữa",
+  path: "/services#sua-chua"
+}, {
+  name: "Bảo trì định kỳ",
+  path: "/services#bao-tri"
+}];
 export function Footer() {
-  return (
-    <footer className="bg-industrial-dark text-industrial-light">
+  return <footer className="bg-industrial-dark text-industrial-light">
       {/* Main Footer */}
       <div className="container-custom py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
@@ -50,12 +54,7 @@ export function Footer() {
               xây dựng chất lượng cao với giá cả cạnh tranh.
             </p>
             <div className="flex items-center gap-3">
-              <a
-                href="https://facebook.com/vantrung"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
-              >
+              <a href="https://facebook.com/vantrung" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary hover:bg-primary hover:text-primary-foreground transition-colors">
                 <Facebook className="w-5 h-5" />
               </a>
             </div>
@@ -67,17 +66,12 @@ export function Footer() {
               LIÊN KẾT NHANH
             </h4>
             <ul className="space-y-2">
-              {quickLinks.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
-                  >
+              {quickLinks.map(link => <li key={link.path}>
+                  <Link to={link.path} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group">
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     {link.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -87,17 +81,12 @@ export function Footer() {
               DỊCH VỤ
             </h4>
             <ul className="space-y-2">
-              {services.map((service) => (
-                <li key={service.path}>
-                  <Link
-                    to={service.path}
-                    className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
-                  >
+              {services.map(service => <li key={service.path}>
+                  <Link to={service.path} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group">
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     {service.name}
                   </Link>
-                </li>
-              ))}
+                </li>)}
             </ul>
           </div>
 
@@ -110,24 +99,18 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-muted-foreground">
-                  123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh
+                  57 Chu Mạnh Trinh, P. Tam Thắng, TP. Hồ Chí Minh (P. 8, TP. Vũng Tàu cũ)                  
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a
-                  href="tel:0123456789"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
+                <a href="tel:0123456789" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   0123 456 789
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <a
-                  href="mailto:vantrung@example.com"
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                >
+                <a href="mailto:vantrung@example.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                   vantrung@example.com
                 </a>
               </li>
@@ -160,6 +143,5 @@ export function Footer() {
           </div>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 }
