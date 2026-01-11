@@ -99,7 +99,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                 <span className="text-sm text-white">
-                  57 Chu Mạnh Trinh, P. Tam Thắng, TP. Hồ Chí Minh (P. 8, TP. Vũng Tàu cũ)                  
+                  57 Chu Mạnh Trinh, P. Tam Thắng, TP. Hồ Chí Minh (P. 8, TP. Vũng Tàu cũ)                   
                 </span>
               </li>
               <li className="flex items-center gap-3">
