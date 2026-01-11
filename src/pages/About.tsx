@@ -152,8 +152,8 @@ const About = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-foreground mb-1">Email</h4>
-                      <a href="mailto:vantrung@example.com" className="text-primary hover:underline">
-                        vantrung@example.com
+                      <a className="text-primary hover:underline" href="mailto:\u200Btrungnguyen0916151266@gmail.com">
+                        ​trungnguyen0916151266@gmail.com
                       </a>
                     </div>
                   </div>
