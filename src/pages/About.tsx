@@ -74,7 +74,7 @@ const About = () => {
         </section>
 
         {/* Mission & Vision */}
-        <section className="section-padding bg-muted">
+        <section className="section-padding bg-[#f6e0e0]">
           <div className="container-custom">
             <AnimatedContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
               <AnimatedItem>
