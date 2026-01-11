@@ -59,7 +59,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display text-lg text-primary-foreground mb-4">
+            <h4 className="font-display text-lg mb-4 text-primary">
               LIÊN KẾT NHANH
             </h4>
             <ul className="space-y-2">
@@ -74,7 +74,7 @@ export function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-display text-lg text-primary-foreground mb-4">
+            <h4 className="font-display text-lg mb-4 text-primary">
               DỊCH VỤ
             </h4>
             <ul className="space-y-2">
@@ -89,7 +89,7 @@ export function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-display text-lg text-primary-foreground mb-4">
+            <h4 className="font-display text-lg mb-4 text-primary">
               LIÊN HỆ
             </h4>
             <ul className="space-y-3">
