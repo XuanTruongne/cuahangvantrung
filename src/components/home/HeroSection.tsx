@@ -155,7 +155,7 @@ export function HeroSection() {
               y: -5
             }} className="bg-primary rounded-lg p-6">
                 <div className="font-display text-2xl text-primary-foreground mb-2">GỌI NGAY</div>
-                <a href="tel:0123456789" className="text-xl font-bold text-primary-foreground hover:underline">0123 456 789</a>
+                <a className="text-xl font-bold text-primary-foreground hover:underline" href="tel:0819516052">0819 516052 </a>
                 <p className="text-sm text-primary-foreground/80 mt-2">Tư vấn miễn phí 24/7</p>
               </motion.div>
             </div>
