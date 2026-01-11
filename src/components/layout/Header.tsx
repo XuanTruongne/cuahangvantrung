@@ -48,7 +48,7 @@ export function Header() {
               <span className="font-display text-xl leading-none text-primary font-bold">
                 VĂN TRUNG
               </span>
-              <span className="text-xs text-primary-foreground">
+              <span className="text-xs text-primary">
                 Thiết bị xây dựng
               </span>
             </div>

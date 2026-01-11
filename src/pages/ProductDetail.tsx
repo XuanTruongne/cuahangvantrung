@@ -385,7 +385,7 @@ const ProductDetail = () => {
                 duration: 0.3,
                 delay: index * 0.05
               }} className={cn("grid grid-cols-2 gap-4 p-4", index % 2 === 0 ? "bg-card" : "bg-muted")}>
-                      <span className="font-medium text-foreground">{key}</span>
+                      <span className="font-medium text-foreground text-justify">{key}</span>
                       <span className="text-muted-foreground">{value}</span>
                     </motion.div>)}
                 </div>
