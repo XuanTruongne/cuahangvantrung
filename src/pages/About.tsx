@@ -104,7 +104,7 @@ const About = () => {
                     <Users className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="font-display text-xl text-foreground mb-4">GIÁ TRỊ CỐT LÕI</h3>
-                  <p className="text-muted-foreground text-justify">Uy tín - Chất lượng - Tận tâm - Chuyên nghiệp là những giá trị chúng tôi luôn ưu tiên và đặt lên hàng đầu,</p>
+                  <p className="text-muted-foreground text-justify">Uy tín - Chất lượng - Tận tâm - Chuyên nghiệp là những giá trị chúng tôi luôn ưu tiên và đặt lên hàng đầu.</p>
                 </div>
               </AnimatedItem>
             </AnimatedContainer>
