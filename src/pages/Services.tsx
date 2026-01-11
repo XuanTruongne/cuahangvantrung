@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Layout } from "@/components/layout/Layout";
+import { PageTransition } from "@/components/ui/page-transition";
+import { AnimatedSection, AnimatedContainer, AnimatedItem } from "@/components/ui/animated-section";
 import { Button } from "@/components/ui/button";
 import {
   Clock,
@@ -10,6 +12,7 @@ import {
   ArrowRight,
   Phone,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const services = [
   {
@@ -81,110 +84,133 @@ const services = [
 const Services = () => {
   return (
     <Layout>
-      {/* Hero */}
-      <section className="pt-24 pb-12 bg-industrial-dark">
-        <div className="container-custom">
-          <div className="text-center max-w-3xl mx-auto">
-            <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
-              Dịch vụ
-            </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4">
-              DỊCH VỤ <span className="text-primary">TOÀN DIỆN</span>
-            </h1>
-            <p className="text-lg text-muted-foreground">
-              Văn Trung cung cấp đầy đủ các dịch vụ từ cho thuê, mua bán đến
-              sửa chữa và bảo trì thiết bị xây dựng.
-            </p>
+      <PageTransition>
+        {/* Hero */}
+        <section className="pt-24 pb-12 bg-industrial-dark">
+          <div className="container-custom">
+            <AnimatedSection className="text-center max-w-3xl mx-auto">
+              <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+                Dịch vụ
+              </span>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4">
+                DỊCH VỤ <span className="text-primary">TOÀN DIỆN</span>
+              </h1>
+              <p className="text-lg text-muted-foreground">
+                Văn Trung cung cấp đầy đủ các dịch vụ từ cho thuê, mua bán đến
+                sửa chữa và bảo trì thiết bị xây dựng.
+              </p>
+            </AnimatedSection>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Services List */}
-      <section className="section-padding bg-background">
-        <div className="container-custom space-y-16">
-          {services.map((service, index) => (
-            <div
-              key={service.id}
-              id={service.id}
-              className={`grid lg:grid-cols-2 gap-12 items-center ${
-                index % 2 === 1 ? "lg:flex-row-reverse" : ""
-              }`}
-            >
-              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
-                <div
-                  className={`w-16 h-16 ${service.color} rounded-lg flex items-center justify-center mb-6`}
-                >
-                  <service.icon className="w-8 h-8 text-primary-foreground" />
-                </div>
-                <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
-                  {service.title.toUpperCase()}
-                </h2>
-                <p className="text-muted-foreground mb-6">{service.fullDesc}</p>
-                <ul className="space-y-3 mb-8">
-                  {service.features.map((feature) => (
-                    <li key={feature} className="flex items-center gap-3">
-                      <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
-                      <span className="text-foreground">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex flex-wrap gap-4">
-                  <Button asChild>
-                    <Link to="/contact">
-                      Yêu cầu dịch vụ
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Link>
-                  </Button>
-                  <Button variant="outline" asChild>
-                    <a href="tel:0123456789">
-                      <Phone className="w-4 h-4 mr-2" />
-                      0123 456 789
-                    </a>
-                  </Button>
-                </div>
-              </div>
-              <div
-                className={`bg-muted rounded-lg p-8 ${
-                  index % 2 === 1 ? "lg:order-1" : ""
+        {/* Services List */}
+        <section className="section-padding bg-background">
+          <div className="container-custom space-y-16">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.id}
+                id={service.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className={`grid lg:grid-cols-2 gap-12 items-center ${
+                  index % 2 === 1 ? "lg:flex-row-reverse" : ""
                 }`}
               >
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center">
-                  <service.icon className="w-24 h-24 text-primary/50" />
+                <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                    className={`w-16 h-16 ${service.color} rounded-lg flex items-center justify-center mb-6`}
+                  >
+                    <service.icon className="w-8 h-8 text-primary-foreground" />
+                  </motion.div>
+                  <h2 className="font-display text-3xl md:text-4xl text-foreground mb-4">
+                    {service.title.toUpperCase()}
+                  </h2>
+                  <p className="text-muted-foreground mb-6">{service.fullDesc}</p>
+                  <ul className="space-y-3 mb-8">
+                    {service.features.map((feature, featureIndex) => (
+                      <motion.li
+                        key={feature}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.3, delay: 0.3 + featureIndex * 0.05 }}
+                        className="flex items-center gap-3"
+                      >
+                        <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                        <span className="text-foreground">{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-4">
+                    <Button asChild>
+                      <Link to="/contact">
+                        Yêu cầu dịch vụ
+                        <ArrowRight className="w-4 h-4 ml-2" />
+                      </Link>
+                    </Button>
+                    <Button variant="outline" asChild>
+                      <a href="tel:0123456789">
+                        <Phone className="w-4 h-4 mr-2" />
+                        0123 456 789
+                      </a>
+                    </Button>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 bg-primary">
-        <div className="container-custom text-center">
-          <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-4">
-            BẠN CẦN TƯ VẤN THÊM?
-          </h2>
-          <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Liên hệ ngay với chúng tôi để được tư vấn miễn phí và nhận báo giá
-            tốt nhất cho dịch vụ bạn cần.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button variant="secondary" size="lg" asChild>
-              <Link to="/contact">Liên hệ ngay</Link>
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              asChild
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
-            >
-              <a href="tel:0123456789">
-                <Phone className="w-4 h-4 mr-2" />
-                0123 456 789
-              </a>
-            </Button>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className={`bg-muted rounded-lg p-8 ${
+                    index % 2 === 1 ? "lg:order-1" : ""
+                  }`}
+                >
+                  <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center">
+                    <service.icon className="w-24 h-24 text-primary/50" />
+                  </div>
+                </motion.div>
+              </motion.div>
+            ))}
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* CTA */}
+        <section className="py-16 bg-primary overflow-hidden">
+          <div className="container-custom">
+            <AnimatedSection className="text-center">
+              <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-4">
+                BẠN CẦN TƯ VẤN THÊM?
+              </h2>
+              <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
+                Liên hệ ngay với chúng tôi để được tư vấn miễn phí và nhận báo giá
+                tốt nhất cho dịch vụ bạn cần.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button variant="secondary" size="lg" asChild>
+                  <Link to="/contact">Liên hệ ngay</Link>
+                </Button>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  asChild
+                  className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                >
+                  <a href="tel:0123456789">
+                    <Phone className="w-4 h-4 mr-2" />
+                    0123 456 789
+                  </a>
+                </Button>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      </PageTransition>
     </Layout>
   );
 };
