@@ -45,10 +45,10 @@ export function Header() {
               <Wrench className="w-6 h-6 text-primary-foreground" />
             </div>
             <div className="flex flex-col">
-              <span className="font-display text-xl leading-none text-foreground">
+              <span className="font-display text-xl leading-none text-primary font-bold">
                 VĂN TRUNG
               </span>
-              <span className="text-xs text-muted-foreground">
+              <span className="text-xs text-primary-foreground">
                 Thiết bị xây dựng
               </span>
             </div>
