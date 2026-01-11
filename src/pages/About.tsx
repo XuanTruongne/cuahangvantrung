@@ -16,7 +16,7 @@ const About = () => {
                 CỬA HÀNG <span className="text-primary">VĂN TRUNG</span>
               </h1>
               <p className="text-white text-2xl text-center">
-                Hơn 10 năm kinh nghiệm trong lĩnh vực cho thuê, mua bán, sửa chữa và bảo trì thiết bị xây dựng chất lượng cao.
+                Hơn 10 năm kinh nghiệm trong lĩnh vực cho thuê, mua bán, sửa chữa và bảo trì thiết bị xây dựng chất lượng cao tại Vũng Tàu   
               </p>
             </AnimatedSection>
           </div>
@@ -27,18 +27,14 @@ const About = () => {
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection direction="left">
-                <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+                <span className="inline-block bg-primary/10 text-primary font-medium rounded-full mb-4 px-[25px] py-[5px] text-2xl">
                   Câu chuyện của chúng tôi
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
                   HÀNH TRÌNH XÂY DỰNG UY TÍN
                 </h2>
                 <div className="space-y-4 text-muted-foreground">
-                  <p>
-                    Văn Trung được thành lập từ năm 2014 với mong muốn mang đến cho
-                    khách hàng những thiết bị xây dựng chất lượng nhất với giá cả
-                    hợp lý.
-                  </p>
+                  <p>Cửa Hàng Văn Trung được thành lập từ năm 2014 với mong muốn mang đến cho khách hàng những thiết bị xây dựng chất lượng nhất với giá cả hợp lý.</p>
                   <p>
                     Qua hơn 10 năm phát triển, chúng tôi đã trở thành đối tác tin
                     cậy của hàng trăm công trình xây dựng lớn nhỏ trên khắp cả
