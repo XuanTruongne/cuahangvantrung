@@ -144,24 +144,21 @@ const Services = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-16 bg-primary overflow-hidden">
+        <section className="py-16 overflow-hidden bg-[#f98806]/[0.77]">
           <div className="container-custom">
             <AnimatedSection className="text-center">
               <h2 className="font-display text-3xl md:text-4xl text-primary-foreground mb-4">
                 BẠN CẦN TƯ VẤN THÊM?
               </h2>
-              <p className="text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-                Liên hệ ngay với chúng tôi để được tư vấn miễn phí và nhận báo giá
-                tốt nhất cho dịch vụ bạn cần.
-              </p>
+              <p className="mb-8 max-w-2xl mx-auto text-black text-xl">Liên hệ ngay với chúng tôi để được tư vấn miễn phí và nhận báo giá tốt nhất cho dịch vụ bạn cần</p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Button variant="secondary" size="lg" asChild>
                   <Link to="/contact">Liên hệ ngay</Link>
                 </Button>
                 <Button variant="outline" size="lg" asChild className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                  <a href="tel:0123456789">
+                  <a href="tel:0819516052" className="text-black">
                     <Phone className="w-4 h-4 mr-2" />
-                    0123 456 789
+                    0819 516 052  
                   </a>
                 </Button>
               </div>
