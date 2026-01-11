@@ -79,11 +79,11 @@ const About = () => {
             <AnimatedContainer className="grid md:grid-cols-3 gap-8" staggerDelay={0.15}>
               <AnimatedItem>
                 <div className="bg-card rounded-lg p-8 border border-border h-full">
-                  <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
+                  <div className="w-14 h-14 bg-primary/10 rounded-lg mb-6 items-center justify-center flex flex-row">
                     <Target className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="font-display text-xl text-foreground mb-4">SỨ MỆNH</h3>
-                  <p className="text-muted-foreground">
+                  <p className="text-muted-foreground text-justify">
                     Cung cấp giải pháp thiết bị xây dựng toàn diện, giúp khách hàng
                     tiết kiệm chi phí và tối ưu hiệu quả công việc.
                   </p>
@@ -95,10 +95,7 @@ const About = () => {
                     <Award className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="font-display text-xl text-foreground mb-4">TẦM NHÌN</h3>
-                  <p className="text-muted-foreground">
-                    Trở thành đơn vị hàng đầu trong lĩnh vực cung cấp thiết bị xây
-                    dựng tại Việt Nam.
-                  </p>
+                  <p className="text-muted-foreground text-justify">Trở thành đơn vị hàng đầu cung cấp thiết bị xây dựng tại miền nam nói chung và Thành Phố Vũng Tàu nói riêng. </p>
                 </div>
               </AnimatedItem>
               <AnimatedItem>
@@ -107,10 +104,7 @@ const About = () => {
                     <Users className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="font-display text-xl text-foreground mb-4">GIÁ TRỊ CỐT LÕI</h3>
-                  <p className="text-muted-foreground">
-                    Uy tín - Chất lượng - Tận tâm - Chuyên nghiệp là những giá trị
-                    chúng tôi luôn đề cao.
-                  </p>
+                  <p className="text-muted-foreground text-justify">Uy tín - Chất lượng - Tận tâm - Chuyên nghiệp là những giá trị chúng tôi luôn ưu tiên và đặt lên hàng đầu,</p>
                 </div>
               </AnimatedItem>
             </AnimatedContainer>
