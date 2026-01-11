@@ -112,15 +112,15 @@ const Contact = () => {
       <PageTransition>
         {/* Hero */}
         <section className="pt-24 pb-12 bg-industrial-dark">
-          <div className="container-custom">
+          <div className="container-custom my-[30px]">
             <AnimatedSection className="text-center max-w-3xl mx-auto">
-              <span className="inline-block px-4 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full mb-4">
+              <span className="inline-block bg-primary/10 text-primary font-medium rounded-full mb-4 px-[25px] py-[5px] text-2xl">
                 Liên hệ
               </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4">
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 py-[10px]">
                 LIÊN HỆ <span className="text-primary">VỚI CHÚNG TÔI</span>
               </h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-primary-foreground text-2xl">
                 Chúng tôi luôn sẵn sàng hỗ trợ bạn. Hãy để lại thông tin và chúng
                 tôi sẽ liên hệ lại trong thời gian sớm nhất.
               </p>
