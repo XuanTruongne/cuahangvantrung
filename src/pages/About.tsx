@@ -15,7 +15,7 @@ const About = () => {
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4">
                 CỬA HÀNG <span className="text-primary">VĂN TRUNG</span>
               </h1>
-              <p className="text-lg text-muted-foreground">
+              <p className="text-white text-2xl text-center">
                 Hơn 10 năm kinh nghiệm trong lĩnh vực cho thuê, mua bán, sửa chữa và bảo trì thiết bị xây dựng chất lượng cao.
               </p>
             </AnimatedSection>
