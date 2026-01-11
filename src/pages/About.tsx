@@ -9,7 +9,7 @@ const About = () => {
         <section className="pt-24 pb-12 bg-industrial-dark">
           <div className="container-custom my-[25px]">
             <AnimatedSection className="text-center max-w-3xl mx-auto">
-              <span className="inline-block font-medium rounded-full mb-4 text-2xl text-primary bg-[#f98806]/[0.24] px-[25px] py-[5px]">
+              <span className="inline-block font-medium rounded-full mb-4 text-2xl text-primary px-[25px] py-[5px] bg-[#f98806]/[0.18]">
                 Về chúng tôi
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 py-[10px]">
