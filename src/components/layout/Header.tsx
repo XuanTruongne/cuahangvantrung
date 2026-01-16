@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Wrench } from "lucide-react";
+import { Menu, X, Phone, Cog } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 const navLinks = [{
@@ -42,7 +42,7 @@ export function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Wrench className="w-6 h-6 text-primary-foreground" />
+              <Cog className="w-6 h-6 text-primary-foreground" />
             </div>
             <div className="flex flex-col">
               <span className="font-display text-xl leading-none text-primary font-bold">
