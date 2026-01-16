@@ -49,7 +49,8 @@ const Services = () => {
                 Dịch vụ
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 my-0 py-[10px]">
-                DỊCH VỤ <span className="text-primary">TOÀN DIỆN</span>
+                DỊCH VỤ <span className="text-primary">
+TOÀN DIỆN</span>
               </h1>
               <p className="text-primary-foreground text-2xl">
                  Cửa Hàng  Văn Trung cung cấp đầy đủ các dịch vụ từ cho thuê, mua bán đến sửa chữa và bảo trì thiết bị xây dựng.                                       
