@@ -66,7 +66,7 @@ export function HeroSection() {
               duration: 0.6
             }} className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl text-primary-foreground leading-tight py-[10px]">
                 VĂN TRUNG
-                <span className="block text-primary py-[20px] text-7xl">THIẾT BỊ XÂY DỰNG</span>
+                <span className="block text-primary py-[20px] text-6xl">THIẾT BỊ XÂY DỰNG</span>
               </motion.h1>
               <motion.p variants={itemVariants} transition={{
               duration: 0.6
