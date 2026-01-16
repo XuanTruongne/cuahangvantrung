@@ -13,7 +13,8 @@ const About = () => {
                 Về chúng tôi
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground mb-4 py-[10px]">
-                CỬA HÀNG <span className="text-primary">VĂN TRUNG</span>
+                CỬA HÀNG <span className="text-primary">
+VĂN TRUNG</span>
               </h1>
               <p className="text-white text-2xl text-center">
                 Hơn 10 năm kinh nghiệm trong lĩnh vực cho thuê, mua bán, sửa chữa và bảo trì thiết bị xây dựng chất lượng cao tại Vũng Tàu   
@@ -27,7 +28,7 @@ const About = () => {
           <div className="container-custom">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <AnimatedSection direction="left">
-                <span className="inline-block bg-primary/10 text-primary font-medium rounded-full mb-4 px-[25px] py-[5px] text-2xl">
+                <span className="inline-block bg-primary/10 text-primary font-medium rounded-full mb-4 px-[25px] py-[5px] text-xl">
                   Câu chuyện của chúng tôi
                 </span>
                 <h2 className="font-display text-3xl md:text-4xl text-foreground mb-6">
