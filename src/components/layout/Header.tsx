@@ -63,7 +63,7 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
-            <a href="tel:0123456789" className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
+            <a href="tel:0819516052" className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-primary transition-colors">
               <Phone className="w-4 h-4" />
               <span>0819 516 052 </span>
             </a>
@@ -85,9 +85,9 @@ export function Header() {
                 {link.name}
               </Link>)}
             <div className="mt-4 pt-4 border-t border-border">
-              <a href="tel:0123456789" className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-foreground">
+              <a href="tel:0819516052" className="flex items-center gap-2 px-4 py-3 text-sm font-medium text-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                <span>0123 456 789</span>
+                <span>0819 516 052</span>
               </a>
             </div>
           </nav>

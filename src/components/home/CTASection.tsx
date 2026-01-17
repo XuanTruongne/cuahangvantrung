@@ -31,7 +31,7 @@ export function CTASection() {
 
             {/* Actions */}
             <div className="flex flex-col sm:flex-row items-center gap-4">
-              <motion.a href="tel:0123456789" className="flex items-center gap-3 px-6 py-4 bg-primary rounded-lg text-primary-foreground hover:opacity-90 transition-opacity" whileHover={{
+              <motion.a href="tel:0819516052" className="flex items-center gap-3 px-6 py-4 bg-primary rounded-lg text-primary-foreground hover:opacity-90 transition-opacity" whileHover={{
               scale: 1.05
             }} whileTap={{
               scale: 0.98

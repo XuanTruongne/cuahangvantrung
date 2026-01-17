@@ -5,14 +5,14 @@ const buttons = [
   {
     id: "phone",
     icon: Phone,
-    href: "tel:0123456789",
+    href: "tel:0819516052",
     label: "Gọi điện",
     color: "bg-success hover:bg-success/90",
   },
   {
     id: "zalo",
     icon: MessageCircle,
-    href: "https://zalo.me/0123456789",
+    href: "https://zalo.me/0819516052",
     label: "Zalo",
     color: "bg-blue-500 hover:bg-blue-600",
   },
