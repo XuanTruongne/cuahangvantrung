@@ -179,7 +179,7 @@ const Contact = () => {
                 duration: 0.5,
                 delay: 0.4
               }} className="rounded-lg overflow-hidden border border-border h-[250px]">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4946681007846!2d106.69920147573875!3d10.773374259225896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f4670702e31%3A0xa5777fb3a5bb9972!2zQuG6v24gVGjDoG5oIFBo4buRIEjhu5MgQ2jDrSBNaW5o!5e0!3m2!1svi!2s!4v1704963123456!5m2!1svi!2s" width="100%" height="100%" style={{
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245.3018296583766!2d107.08946988586169!3d10.355532293697937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31756fbdcc2569f9%3A0x346ca524de162132!2zQ-G7rWEgSMOgbmcgVsSDbiBUcnVuZw!5e0!3m2!1svi!2s!4v1768722507132!5m2!1svi!2s" width="100%" height="100%" style={{
                   border: 0
                 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Bản đồ cửa hàng Văn Trung" />
                 </motion.div>
