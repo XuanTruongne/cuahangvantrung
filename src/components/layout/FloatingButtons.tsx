@@ -19,7 +19,7 @@ const buttons = [
   {
     id: "facebook",
     icon: Facebook,
-    href: "https://facebook.com/vantrung",
+    href: "https://www.facebook.com/profile.php?id=100068437474136",
     label: "Facebook",
     color: "bg-blue-600 hover:bg-blue-700",
   },
