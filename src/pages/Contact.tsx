@@ -88,19 +88,19 @@ const Contact = () => {
   const contactItems = [{
     icon: MapPin,
     title: "Địa chỉ",
-    content: "123 Đường ABC, Quận XYZ, TP. Hồ Chí Minh",
+    content: "57 Chu Mạnh Trinh, P. Tam Thắng, TP. Hồ Chí Minh (P. 8, TP. Vũng Tàu cũ)",
     isLink: false
   }, {
     icon: Phone,
     title: "Điện thoại",
-    content: "0123 456 789",
-    href: "tel:0123456789",
+    content: "0819516052",
+    href: "tel:0819516052",
     isLink: true
   }, {
     icon: Mail,
     title: "Email",
-    content: "vantrung@example.com",
-    href: "mailto:vantrung@example.com",
+    content: "trungnguyen0916151266@gmail.com",
+    href: "mailto:trungnguyen0916151266@gmail.com",
     isLink: true
   }, {
     icon: Clock,
