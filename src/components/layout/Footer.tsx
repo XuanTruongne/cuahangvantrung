@@ -67,7 +67,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {quickLinks.map(link => <li key={link.path}>
-                  <Link to={link.path} className="flex items-center gap-2 text-sm transition-colors group text-primary-foreground">
+                  <Link to={link.path} className="flex items-center gap-2 text-sm transition-colors group text-primary-foreground hover:text-primary">
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     {link.name}
                   </Link>
@@ -82,7 +82,7 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {services.map(service => <li key={service.path}>
-                  <Link to={service.path} className="flex items-center gap-2 text-sm transition-colors group text-primary-foreground">
+                  <Link to={service.path} className="flex items-center gap-2 text-sm transition-colors group text-primary-foreground hover:text-primary">
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     {service.name}
                   </Link>
@@ -96,27 +96,27 @@ export function Footer() {
               LIÊN HỆ
             </h4>
             <ul className="space-y-3">
-              <li className="flex items-start gap-3">
+              <li className="flex items-start gap-3 group">
                 <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-white">
+                <span className="text-sm text-white group-hover:text-primary transition-colors">
                   57 Chu Mạnh Trinh, P. Tam Thắng, TP. Hồ Chí Minh (P. 8, TP. Vũng Tàu cũ)                   
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="tel:0819516052" className="text-sm transition-colors text-white">
+                <a href="tel:0819516052" className="text-sm transition-colors text-white hover:text-primary">
                   0819 516 052  
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary flex-shrink-0" />
-                <a href="mailto:\u200Btrungnguyen0916151266@gmail.com" className="text-sm transition-colors text-white">
+                <a href="mailto:trungnguyen0916151266@gmail.com" className="text-sm transition-colors text-white hover:text-primary">
                   ​trungnguyen0916151266@gmail.com
                 </a>
               </li>
-              <li className="flex items-center gap-3">
+              <li className="flex items-center gap-3 group">
                 <Clock className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-sm text-white">
+                <span className="text-sm text-white group-hover:text-primary transition-colors">
                   7:00 - 18:00 (T2 - T7)
                 </span>
               </li>
