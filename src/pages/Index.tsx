@@ -5,10 +5,12 @@ import { FeaturedProducts } from "@/components/home/FeaturedProducts";
 import { WhyChooseUs } from "@/components/home/WhyChooseUs";
 import { RecentNews } from "@/components/home/RecentNews";
 import { CTASection } from "@/components/home/CTASection";
+import { TetHolidayPopup } from "@/components/TetHolidayPopup";
 
 const Index = () => {
   return (
     <Layout>
+      <TetHolidayPopup />
       <HeroSection />
       <ServicesSection />
       <FeaturedProducts />
