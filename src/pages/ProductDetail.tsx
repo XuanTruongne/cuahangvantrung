@@ -269,18 +269,6 @@ const ProductDetail = () => {
                   {product.name}
                 </motion.h1>
 
-                {/* Description */}
-                {product.description && <motion.p initial={{
-                opacity: 0
-              }} animate={{
-                opacity: 1
-              }} transition={{
-                duration: 0.4,
-                delay: 0.15
-              }} className="text-muted-foreground leading-relaxed">
-                    {product.description}
-                  </motion.p>}
-
                 {/* Prices */}
                 <motion.div initial={{
                 opacity: 0,
@@ -388,6 +376,18 @@ const ProductDetail = () => {
                       <span className="font-medium text-foreground text-justify">{key}</span>
                       <span className="text-muted-foreground">{value}</span>
                     </motion.div>)}
+                </div>
+              </AnimatedSection>}
+
+            {/* Description */}
+            {product.description && <AnimatedSection delay={0.35} className="mt-12">
+                <h2 className="font-display text-2xl text-foreground mb-6">
+                  MÔ TẢ SẢN PHẨM
+                </h2>
+                <div className="bg-card rounded-lg border border-border p-6">
+                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {product.description}
+                  </p>
                 </div>
               </AnimatedSection>}
 
